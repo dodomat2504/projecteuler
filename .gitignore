@@ -1,3 +1,4 @@
+*.exe
 *git
 *.user
 *build*/
