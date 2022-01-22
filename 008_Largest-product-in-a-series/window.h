@@ -9,7 +9,7 @@ class Window {
 private:
     int arr[size];
 
-    long maxProductEver = 0;
+    long long maxProductEver = 0;
     int lastElementIndex = 0;
 
 
@@ -20,7 +20,7 @@ private:
 
     void updateProduct() {
         if (!containsZero()) {
-            long product = 1;
+            long long product = 1;
             for (int i = 0; i < size; i++) {
                 product *= arr[i];
             }
@@ -40,7 +40,7 @@ public:
 
 
 
-    long getMaxProductEver() const { return maxProductEver; }
+    long long getMaxProductEver() const { return maxProductEver; }
 
 };
 
