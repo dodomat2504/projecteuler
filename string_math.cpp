@@ -66,6 +66,15 @@ Number Number::operator-(const Number& n) const {
 
 Number Number::operator*(const Number& n) const {
 
+    const std::string num1 = _str;
+    const std::string num2 = n.toString();
+
+    for (int i = 0; i < num1.length(); i++) {
+        for (int j = 0; j < num2.length(); j++) {
+            // iwas machen
+        }
+    }
+
 }
 
 Number Number::operator*=(const Number& n) {
