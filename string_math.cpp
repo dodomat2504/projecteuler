@@ -1,7 +1,7 @@
 #include "string_math.h"
 #include <iostream>
 
-static const int ASCII_HUSO = 48;
+static const int ASCII = 48;
 
 
 Number::Number(const std::string& numberAsString) {
@@ -35,8 +35,8 @@ Number Number::operator+(const Number& n) const {
     std::string ergebnis = "";
     int uebertrag = 0;
     for (int i = longerStringLength - 1; i >= 0; i--) {
-        const int summA = num1[i] - ASCII_HUSO; // ASCII wirklich huso
-        const int summB = num2[i] - ASCII_HUSO;
+        const int summA = num1[i] - ASCII; // ASCII wirklich huso
+        const int summB = num2[i] - ASCII;
 
         int summe = summA + summB + uebertrag;
         uebertrag = 0;
@@ -65,20 +65,43 @@ Number Number::operator-(const Number& n) const {
 }
 
 Number Number::operator*(const Number& n) const {
-
     const std::string num1 = _str;
     const std::string num2 = n.toString();
 
+    Number sum;
+
     for (int i = 0; i < num1.length(); i++) {
+        const int fakt1 = num1[i] - ASCII;
+
+        int uebertrag = 0;
+        std::string product = "";
+
         for (int j = 0; j < num2.length(); j++) {
-            // iwas machen
+            const int fakt2 = num2[num2.length() - 1 - j] - ASCII;
+            int prod = fakt1 * fakt2 + uebertrag;
+            uebertrag = 0;
+            while (prod >= 10) {
+                uebertrag++;
+                prod-=10;
+            }
+
+            product = std::to_string(prod) + product;
         }
+        if (uebertrag > 0) product = std::to_string(uebertrag) + product;
+
+        for (int z = 0; z < num1.length()-i-1; z++) product += "0";
+
+        sum += Number(product);
     }
 
+    return sum;
 }
 
 Number Number::operator*=(const Number& n) {
-
+    const std::string newStr = ((*this) * n).toString();
+    this->_str = newStr;
+    this->_lengthOfStr = _str.length();
+    return *this;
 }
 
 Number Number::operator/(const Number& n) const {
