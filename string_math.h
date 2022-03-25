@@ -9,7 +9,7 @@
 
 
 class Number {
-private:
+protected:
     /// @brief Length of the char** with nulltermination
     int _lengthOfStr;
 
@@ -33,10 +33,3 @@ public:
 };
 
 #endif // STRING_MATH_H
-
-
-
-
-
-
-// cout << "Du dummer hurensohn cpp code" << endl; yalla hier ist der key to my heart, geh mal auf yt und such nach rick roll vertrau mir ist kein rickroll :D
