@@ -10,7 +10,7 @@ static void swap(std::string& str, const int i1, const int i2) {
 
 int main() {
 
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 10; i++) {
         const int PERM = 1 + i;
         std::string number = "0123456789";
         const int LEN = number.length();
@@ -19,7 +19,7 @@ int main() {
             for (int index = LEN - 1; index >= 0; index--) {
                 const int reverseIndex = LEN - 1 - index;
 
-                if ((c % PERM) % ((int) pow(reverseIndex+1, reverseIndex)) == 0) {
+                if ((c % PERM) % ((int) pow(2, reverseIndex)) == 0) {
                     if (index != 0) swap(number, index-1, index);
                     else {
                         for (int i = LEN-1; i > 0; i--) swap(number, i-1, i);

@@ -17,6 +17,7 @@ protected:
     std::string _str;
 public:
     Number(const std::string& = "");
+    Number(const int);
 
     const std::string& toString() const;
 
@@ -25,6 +26,7 @@ public:
 
     Number operator+(const Number&) const;
     Number operator+=(const Number&);
+    Number& operator=(const Number&);
     Number operator-(const Number&) const;
     Number operator*(const Number&) const;
     Number operator*=(const Number&);

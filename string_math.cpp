@@ -9,6 +9,11 @@ Number::Number(const std::string& numberAsString) {
     _str = numberAsString;
 }
 
+Number::Number(const int i) {
+    this->_str = std::to_string(i);
+    this->_lengthOfStr = this->_str.length();
+}
+
 const std::string& Number::toString() const { return _str; }
 
 int Number::length() const { return _lengthOfStr; }
@@ -106,4 +111,10 @@ Number Number::operator*=(const Number& n) {
 
 Number Number::operator/(const Number& n) const {
 
+}
+
+Number& Number::operator=(const Number& n) {
+    this->_str = n.toString();
+    this->_lengthOfStr = this->_str.length();
+    return *this;
 }
