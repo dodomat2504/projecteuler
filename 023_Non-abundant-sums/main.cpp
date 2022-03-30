@@ -56,6 +56,8 @@ int main() {
         }
     }
 
+    std::cout << "Size of Sums Vector: " << sumsOfAbundandNumbers.size() << std::endl;
+
     long sum = 0;
 
     for (int i = 1; i <= Grenze; i++) if (!contains(sumsOfAbundandNumbers, i)) sum += i;
