@@ -1,4 +1,5 @@
 #include "dmath.h"
+#include <vector>
 
 
 int sumOfDivisors(const int n) {
@@ -21,4 +22,23 @@ int sumOfDivisors(const int n) {
     }
 
     return sumOfDivisors;
+}
+
+static int indexOf(std::vector<int>& vec, const int data) {
+    for () {}
+}
+
+int longestReciprocalCycle(const int divisor) {
+    int dividend = 1;
+    bool found = false;
+
+    std::vector<int> dividends;
+    dividends.push_back(dividend);
+    
+
+    while (!found) {
+
+        // TODO
+
+    }
 }
