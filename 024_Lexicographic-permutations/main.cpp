@@ -1,44 +1,48 @@
 #include <iostream>
 #include <cmath>
 
-
-static void insert(std::vector<int>& vec, const int data) {
-    int l = 0, r = vec.size()-1;
-    if (vec.size() == 0) {
-        vec.push_back(data);
-        return;
-    }
-
-    int prev_mid = -1;
-    while (true) {
-        if (r == l) {
-            vec.insert(vec.begin()+l, data);
-            break;
-        }
-
-        const int mid = (r + l) / 2;
-        if (mid == prev_mid) throw std::invalid_argument("Hä");
-        prev_mid = mid;
-        if (vec[mid] > data) r = mid;
-        else if (vec[mid] < data) l = mid + 1;
-        else throw std::invalid_argument("Nä");
-    }
-}
-
-void rec(int& counter, std::vector<int>& numbers, const int depth) {
-    
+static void swap(std::string& str, const int i1, const int i2) {
+    if (i1 >= str.length() || i2 >= str.length() || i1 < 0 || i2 < 0) throw std::invalid_argument("Lösch dich");
+    const char c = str[i1];
+    str[i1] = str[i2];
+    str[i2] = c;
 }
 
 
 int main() {
 
     const int PERM = 1000000;
-    std::string number = "0123456789";
-    const int LEN = number.length();
+    std::string s = "0123456789";
 
-    int counter = 0;
 
-    std::cout << "Permutation" << PERM << ": " << number << std::endl;
+    for (int i = 2; i <= PERM; i++) {
+        
+        int pivot = -1;
+
+        for (int j = s.length() - 1; j > 0; j--) {
+            if (s[j-1] < s[j]) {
+                pivot = j-1;
+                break;
+            }
+        }
+        if (pivot == -1) break;
+
+        int successor = -1;
+
+        for (int j = s.length() - 1; j > pivot; j--) {
+            if (s[j] > s[pivot]) {
+                successor = j;
+                break;
+            }
+        }
+
+        swap(s, pivot, successor);
+
+        for (int j = 0; j < ceil((s.length() - 1 - (pivot + 1))/2.0); j++) swap(s, pivot + 1 + j, s.length() - 1 - j);
+    }
+
+
+    std::cout << "Permutation" << PERM << ": " << s << std::endl;
 
     return 0;
 }
