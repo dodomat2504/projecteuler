@@ -1,48 +1,44 @@
 #include <iostream>
 #include <cmath>
 
-static void swap(std::string& str, const int i1, const int i2) {
-    if (i1 >= str.length() || i2 >= str.length() || i1 < 0 || i2 < 0) throw std::invalid_argument("String index out of bounds.");
-    const char c = str[i1];
-    str[i1] = str[i2];
-    str[i2] = c;
+
+static void insert(std::vector<int>& vec, const int data) {
+    int l = 0, r = vec.size()-1;
+    if (vec.size() == 0) {
+        vec.push_back(data);
+        return;
+    }
+
+    int prev_mid = -1;
+    while (true) {
+        if (r == l) {
+            vec.insert(vec.begin()+l, data);
+            break;
+        }
+
+        const int mid = (r + l) / 2;
+        if (mid == prev_mid) throw std::invalid_argument("Hä");
+        prev_mid = mid;
+        if (vec[mid] > data) r = mid;
+        else if (vec[mid] < data) l = mid + 1;
+        else throw std::invalid_argument("Nä");
+    }
 }
+
+void rec(int& counter, std::vector<int>& numbers, const int depth) {
+    
+}
+
 
 int main() {
 
-    for (int i = 0; i < 10; i++) {
-        const int PERM = 1 + i;
-        std::string number = "0123456789";
-        const int LEN = number.length();
+    const int PERM = 1000000;
+    std::string number = "0123456789";
+    const int LEN = number.length();
 
-        for (int c = 1; c < PERM; c++) {
-            for (int index = LEN - 1; index >= 0; index--) {
-                const int reverseIndex = LEN - 1 - index;
+    int counter = 0;
 
-                if ((c % PERM) % ((int) pow(2, reverseIndex)) == 0) {
-                    if (index != 0) swap(number, index-1, index);
-                    else {
-                        for (int i = LEN-1; i > 0; i--) swap(number, i-1, i);
-                    }
-                }
-            }
-        }
-
-        std::cout << "Permutation" << PERM << ": " << number << std::endl;
-    }
-
-
-    /*
-       0 0 0 0 0 0 0 0 0 0 -> 0 1 2 3 4 5 6 7 8 9
-       0 0 0 0 0 0 0 0 0 1 -> 0 1 2 3 4 5 6 7 9 8
-       0 0 0 0 0 0 0 0 1 0 -> 0 1 2 3 4 5 6 8 7 9
-       0 0 0 0 0 0 0 0 1 1 -> 0 1 2 3 4 5 6 8 9 7
-       0 0 0 0 0 0 0 1 0 0 -> 0 1 2 3 4 5 8 6 7 9
-       0 0 0 0 0 0 0 1 0 1 -> 0 1 2 3 4 5 8 6 9 7
-       0 0 0 0 0 0 0 1 1 0 -> 0 1 2 3 4 5 8 7 6 9
-       0 0 0 0 0 0 0 1 1 1 -> 0 1 2 3 4 5 8 7 9 6
-       0 0 0 0 0 0 1 0 0 0 -> 0 1 2 3 4 8 5 6 7 9
-    */
+    std::cout << "Permutation" << PERM << ": " << number << std::endl;
 
     return 0;
 }
