@@ -32,7 +32,7 @@ int main() {
                 longest_b = b;
             }
         }
-        if (a % 20) std::cout << "Finished " << (a+999)/10.0 << "%" << std::endl;
+        if (a % 20) std::cout << "Finished " << (a+999)/20.0 << "%" << std::endl;
     }
 
     std::cout << "Prod: " << longest_a*longest_b << std::endl;
