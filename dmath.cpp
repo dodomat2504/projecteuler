@@ -24,10 +24,6 @@ int sumOfDivisors(const int n) {
     return sumOfDivisors;
 }
 
-static int indexOf(std::vector<int>& vec, const int data) {
-    for () {}
-}
-
 int longestReciprocalCycle(const int divisor) {
     int dividend = 1;
     bool found = false;
