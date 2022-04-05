@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 bool isValidNumber(const int n) {
     const std::string nmb = std::to_string(n);
@@ -15,6 +16,8 @@ int main() {
 
     int sum = 0;
 
+    clock_t start = clock();
+
     for (int produkt = 1234; produkt <= 9876; produkt++) {
         if (!isValidNumber(produkt)) continue;
 
@@ -28,12 +31,15 @@ int main() {
             if (combinedNum.length() != 9) continue;
 
             if (isValidNumber(std::stoi(combinedNum))) {
-                std::cout << "F1: " << faktor1 << ", F2: " << faktor2 << ", P: " << produkt << " Works! " << combinedNum << std::endl;
                 sum += produkt;
                 break;
             }
         }
     }
+
+    clock_t end = clock();
+
+    std::cout << "Time: " << (end-start)*1000000 / CLOCKS_PER_SEC << std::endl;
 
     std::cout << "Sum: " << sum << std::endl;
 
