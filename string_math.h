@@ -7,14 +7,11 @@
 #include <string>
 
 
-
 class Number {
 protected:
-    /// @brief Length of the char** with nulltermination
     int _lengthOfStr;
-
-    /// @brief Pointer to the string of numbers
     std::string _str;
+
 public:
     Number(const std::string& = "");
     Number(const int);
@@ -24,6 +21,8 @@ public:
     /// @returns the length of the number
     int length() const;
 
+    static Number pow(const int, const int);
+
     Number operator+(const Number&) const;
     Number operator+=(const Number&);
     Number& operator=(const Number&);
@@ -32,6 +31,9 @@ public:
     Number operator*=(const Number&);
     Number operator/(const Number&) const;
     std::ostream& operator<<(std::ostream&) const;
+
+    bool operator==(const Number&) const;
+    bool operator<(const Number&) const;
 };
 
 #endif // STRING_MATH_H

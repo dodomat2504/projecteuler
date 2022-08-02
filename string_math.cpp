@@ -118,3 +118,30 @@ Number& Number::operator=(const Number& n) {
     this->_lengthOfStr = this->_str.length();
     return *this;
 }
+
+Number Number::pow(const int a, const int b) {
+    Number base(1);
+    const Number na(a);
+    for (int i = 0; i < b; i++) base*=na;
+    return base;
+}
+
+bool Number::operator==(const Number& b) const { return this->_str == b.toString(); }
+
+bool Number::operator<(const Number& b) const {
+    const std::string sa = this->_str, sb = b.toString();
+    if (sa.length() < sb.length()) {
+        return true;
+    } else if (sb.length() < sa.length()) {
+        return false;
+    } else {
+        for (int i = 0; i < sa.length(); i++) {
+            if (sa[i] < sb[i]) {
+                return true;
+            } else if (sa[i] > sb[i]) {
+                return false;
+            }
+        }
+    }
+    return false;
+}

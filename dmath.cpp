@@ -24,17 +24,29 @@ int sumOfDivisors(const int n) {
     return sumOfDivisors;
 }
 
-int longestReciprocalCycle(const int divisor) {
+static int indexOf(const std::vector<int>& vec, const int data) {
+    for (int i = 0; i < vec.size(); i++) if (vec[i] == data) return i;
+    return -1;
+}
+
+int lengthOfReciprocalCycleOf(const int n) {
     int dividend = 1;
-    bool found = false;
-
     std::vector<int> dividends;
-    dividends.push_back(dividend);
-    
+    int length = 0;
 
-    while (!found) {
+    while (true) {
+        const int r = dividend - ((int) dividend/n) * n;
 
-        // TODO
+        if (r == 0) break;
 
+        dividend = 10*r;
+        const int indexOfDividendInVector = indexOf(dividends, dividend);
+
+        if (indexOfDividendInVector != -1) {
+            length = dividends.size() - indexOfDividendInVector;
+            break;
+        } else dividends.push_back(dividend);
     }
+
+    return length;
 }
