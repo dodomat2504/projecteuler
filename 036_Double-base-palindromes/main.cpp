@@ -5,7 +5,7 @@ static bool isPalindrome(const std::string& n) {
     return true;
 }
 
-static std::string decToBin(const int d) { // Dividend / Divisor = Int-Quotient + Rest/Divisor -> Rest = Dividend - Divisor*Int-Quotient
+static std::string decToBin(const int d) {
     std::string s = "";
     int zw = d;
     while (zw != 0) {
